@@ -1,0 +1,32 @@
+package Fundamentals_I.Part_5.ObjectsAndReferences.Books;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Book> books = new ArrayList<>();
+
+        while (true) {
+            System.out.println("Name (empty will stop):");
+            String name = sc.nextLine();
+            if (name.isEmpty()) {
+                break;
+            }
+
+            System.out.println("Publication year:");
+            int publicationYear = Integer.valueOf(sc.nextLine());
+
+            Book book = new Book(name, publicationYear);
+
+            if (books.contains(book)) {
+                System.out.println("This book is already on the list. Let's not add the same book again.");
+                continue;
+            }
+            books.add(book);
+        }
+
+        System.out.println("Thank you! Books added: " + books.size());
+    }
+}
